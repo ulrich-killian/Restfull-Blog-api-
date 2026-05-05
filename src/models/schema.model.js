@@ -1,4 +1,4 @@
-import { pool } from '../config/db.js';
+import { pool } from '../config/database.config.js';
 import bcrypt from 'bcryptjs';
 
 export const createTables = async () => {
