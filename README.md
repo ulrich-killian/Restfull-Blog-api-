@@ -79,7 +79,7 @@ npm test
 
 ---
 
-## 🗄 Database Schema
+##  Database Schema
 
 Three relational tables with cascading deletes:
 
@@ -96,15 +96,15 @@ comments
 
 ---
 
-## 🚦 API Endpoints
+## API Endpoints
 
 Base URL: `http://localhost:3000`
 
-> 🔒 Protected routes require: `Authorization: Bearer <token>`
+>  Protected routes require: `Authorization: Bearer <token>`
 
 ---
 
-### 👤 Authentication
+###  Authentication
 
 | Method | Endpoint | Auth | Description |
 | :--- | :--- | :--- | :--- |
