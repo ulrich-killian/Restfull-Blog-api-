@@ -110,8 +110,8 @@ Base URL: `https://restfull-blog-api.onrender.com`
 | :--- | :--- | :--- | :--- |
 | `POST` | `/auth/register` | Public | Register a new user. Returns `201` with JWT. |
 | `POST` | `/auth/login` | Public | Authenticate user. Returns JWT or `401`. |
-| `GET` | `/auth/me` | 🔒 Required | Get logged in user info. |
-| `POST` | `/auth/profile_upload` | 🔒 Required | Upload a profile picture. |
+| `GET` | `/auth/me` |  Required | Get logged in user info. |
+| `POST` | `/auth/profile_upload` |  Required | Upload a profile picture. |
 
 #### Register
 ```
@@ -218,9 +218,9 @@ Body: multipart/form-data
 | :--- | :--- | :--- | :--- |
 | `GET` | `/posts` | Public | List all posts with pagination and search. |
 | `GET` | `/posts/:id` | Public | Fetch a single post with its comments. |
-| `POST` | `/posts` | 🔒 Required | Create a new post. |
-| `PUT` | `/posts/:id` | 🔒 Author only | Update a post. |
-| `DELETE` | `/posts/:id` | 🔒 Author only | Delete a post and all its comments. |
+| `POST` | `/posts` |  Required | Create a new post. |
+| `PUT` | `/posts/:id` |  Author only | Update a post. |
+| `DELETE` | `/posts/:id` |  Author only | Delete a post and all its comments. |
 
 #### Get all posts
 ```
