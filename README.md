@@ -98,7 +98,7 @@ comments
 
 ## API Endpoints
 
-Base URL: `http://localhost:3000`
+Base URL: `https://restfull-blog-api.onrender.com`
 
 >  Protected routes require: `Authorization: Bearer <token>`
 
