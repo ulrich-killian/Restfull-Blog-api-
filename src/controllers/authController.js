@@ -1,4 +1,5 @@
 import * as authService from '../services/authService.js';
+import { pool } from '../config/database.config.js';
 
 export const register = async (req, res) => {
   try {
@@ -35,5 +36,28 @@ export const getMe = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
     res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+export const uploadProfilePicture = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    const fileUrl = `/uploads/${req.file.filename}`;
+
+    await pool.query(
+      'UPDATE users SET profile_picture = $1 WHERE id = $2',
+      [fileUrl, req.user.id]
+    );
+
+    res.status(200).json({
+      success: true,
+      message: 'Profile picture uploaded successfully',
+      profile_picture: fileUrl
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Error uploading profile picture', error: error.message });
   }
 };

@@ -8,6 +8,15 @@ import authRoutes from './src/routes/authRoutes.js';
 import { generalLimiter } from './src/middleware/rateLimit.js';
 import postRoutes from './src/routes/postRoutes.js';
 import { getAllPosts } from './src/controllers/postController.js';
+import commentRoutes from './src/routes/commentRoutes.js';
+import deleteCommentRoute from './src/routes/deleteCommentRoute.js';
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 dotenv.config();
 
@@ -22,6 +31,9 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/posts', postRoutes);
 app.get('/search', getAllPosts);
+app.use('/posts/:id/comments', commentRoutes);
+app.use('/comments', deleteCommentRoute);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
   res.send('Blog API is running');
