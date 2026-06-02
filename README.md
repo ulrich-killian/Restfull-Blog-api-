@@ -124,7 +124,7 @@ POST /auth/register
   "password": "securepass123"
 }
 ```
-**Success `201`:**
+**Success `201`:***
 ```json
 {
   "success": true,
