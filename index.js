@@ -12,6 +12,8 @@ import commentRoutes from './src/routes/commentRoutes.js';
 import deleteCommentRoute from './src/routes/deleteCommentRoute.js';
 import { fileURLToPath } from 'url';
 import path from 'path';
+import swaggerUi from 'swagger-ui-express';
+import swaggerSpec from './swagger.js';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -22,6 +24,22 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(swaggerSpec, {
+  explorer: true,
+  customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.10.3/swagger-ui.min.css',
+  customJs: [
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.10.3/swagger-ui-bundle.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.10.3/swagger-ui-standalone-preset.min.js'
+  ]
+}));
+
+
+app.get('/api-docs-json', (req, res) => {
+  res.json(swaggerSpec);
+});
 
 app.use(generalLimiter);
 app.use(helmet());
